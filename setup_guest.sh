@@ -790,6 +790,23 @@ function bootstrap_cuckoo_guest() {
     sendspecial
     kbstring=":wq"
     sendkeys
+    promptterminalready
+    printf "Downloading xnumon"
+    kbstring='wget https://mirror.roe.ch/rel/xnumon/xnumon-0.1.7.2.pkg'
+    sendkeys
+    promptterminalready
+    printf "installing xnumon. Please click on OK when the GUI prompts"
+    kbstring='sudo installer -pkg xnumon-0.1.7.2.pkg -target /'
+    sendkeys
+    promptterminalready
+    printf "Downloading Xnumon configuration"
+    kbsring='wget https://raw.githubusercontent.com/ManasMahapatra/cuckoo-macOS/master/configuration.plist-default'
+    sendkeys
+    promptterminalready
+    printf "Configuring xnumon"
+    kbstring 'sudo mv configuration.plist-default /Library/Application\ Support/ch.roe.xnumon/'
+    sendkeys
+    promptterminalready
 }
 
 
