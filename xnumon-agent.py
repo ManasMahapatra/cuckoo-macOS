@@ -4,6 +4,13 @@ import socket
 import os
 import sys
 
+#check if an instance of xnumon is already running.
+#If yes, terminate it, and restart with the script.
+#To check, monitor the xnumon.pid file
+PID_PATH = '/private/var/run/xnumon.pid'
+if os.path.isfile(PID_PATH):
+    os.remove(PID_PATH)
+
 #change to xnumon working directory
 os.chdir("/usr/local/sbin/")
 
