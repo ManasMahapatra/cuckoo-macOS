@@ -747,6 +747,9 @@ prompt to use sudo :
 }
 
 function bootstrap_cuckoo_guest() {
+    #----------------------
+    #Setting up ENVIRONMENT
+    #----------------------
     kbspecial='CMDprs SPACE CMDrls'
     sendspecial
     kbstring='terminal'
@@ -790,6 +793,9 @@ function bootstrap_cuckoo_guest() {
     sendspecial
     kbstring=":wq"
     sendkeys
+    #------------------
+    #Setting up XNUMON
+    #------------------
     promptterminalready
     printf "Downloading xnumon"
     kbstring='wget https://mirror.roe.ch/rel/xnumon/xnumon-0.1.7.2.pkg'
@@ -807,6 +813,16 @@ function bootstrap_cuckoo_guest() {
     kbstring 'sudo mv configuration.plist-default /Library/Application\ Support/ch.roe.xnumon/'
     sendkeys
     promptterminalready
+    kbstring='sudo -i'
+    sendkeys
+    promptterminalready
+    printf "Downloading xnumon agent"
+    kbstring='cd /usr/libexec/ && wget https://raw.githubusercontent.com/ManasMahapatra/cuckoo-macOS/master/xnumon-agent.py'
+    sendkeys
+    promptterminalready
+    printf "Downloading xnumon daemon"
+    kbstring='cd /Library/LaunchDaemon/ && wget https://raw.githubusercontent.com/ManasMahapatra/cuckoo-macOS/master/cuckoo.xnumon.plist'
+    sendkeys
 }
 
 
