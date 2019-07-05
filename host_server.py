@@ -2,8 +2,8 @@ import socket
 from threading import *
 #Dummy Reporting Server for testing
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-host = "172.17.9.65"
-port = 6001
+host = "127.0.0.1"
+port = 2042
 serversocket.bind((host, port))
 
 class client(Thread):
