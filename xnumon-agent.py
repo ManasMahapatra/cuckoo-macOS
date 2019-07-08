@@ -27,6 +27,7 @@ class Initiate_monitoring(object):
     def __init__(self):
         self.RECEIVING_PORT = 4343
         self.RECEIVING_HOST = "127.0.0.1"
+        self.PID_PATH = '/private/var/run/xnumon.pid'
     def run(self):
         #kill if process is already running at receiving port
         self._kill_running(self.RECEIVING_PORT)
@@ -47,6 +48,8 @@ class Initiate_monitoring(object):
             if (len(data) <= 1):
                 continue
             os.kill(int(data[1]), signal.SIGKILL)
+        if os.path.isfile(PID_PATH):
+            os.remove(PID_PATH)
     #Socket for receiving the analysis configuration files
     def _recieve_configuration(self):
         socket_guest = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
