@@ -9,7 +9,7 @@ class Config:
     def __init__(self, cfg):
         config = ConfigParser.ConfigParser(allow_no_value=True)
         config.read(cfg)
-        for section in config.sections():
+        for section in config.sections():virtualbox
             for name, raw_value in config.items(section):
                 if name == "file_name":
                     value = config.get(section, name)
@@ -48,8 +48,8 @@ class Initiate_monitoring(object):
             if (len(data) <= 1):
                 continue
             os.kill(int(data[1]), signal.SIGKILL)
-        if os.path.isfile(PID_PATH):
-            os.remove(PID_PATH)
+        if os.path.isfile(self.PID_PATH):
+            os.remove(self.PID_PATH)
     #Socket for receiving the analysis configuration files
     def _recieve_configuration(self):
         socket_guest = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
