@@ -2,8 +2,8 @@ import socket
 from threading import *
 #Dummy Reporting Server for testing
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-host = "127.0.0.1"
-port = 2042
+host = "192.168.43.221"
+port = 6003
 serversocket.bind((host, port))
 
 class client(Thread):
@@ -22,3 +22,4 @@ print ('reporting server started and listening')
 while 1:
     clientsocket, address = serversocket.accept()
     client(clientsocket, address)
+    print("connected")

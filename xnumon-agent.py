@@ -81,7 +81,8 @@ class Initiate_monitoring(object):
     def _transmit_log(self):
         socket_host = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         socket_host.connect((self.config.ip, self.config.port))
-        for logs in self._execute(["./xnumon", "-d"]):
+        socket_host.connect("JSON\n")
+        for logs in self._execute(["sudo", "./xnumon", "-d"]):
             try:
                 socket_host.send(logs.encode());
             except KeyboardInterrupt:
