@@ -889,76 +889,68 @@ function bootstrap_cuckoo_guest() {
     kbspecial='CMDprs SPACE CMDrls'
     sendspecial
     kbstring='terminal'
-    sendkeys
+    send_keys
     kbspecial='ENTER ENTER'
     sendspecial
-    promptterminalready
+    prompt_terminal_ready
     printf "Installing Homebrew"
     kbstring='ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
-    sendkeys
+    send_keys
     kbspecial='ENTER'
     sendspecial
-    promptterminalready
+    prompt_terminal_ready
     printf "Installing Python"
     kbstring='HOMEBREW_NO_AUTO_UPDATE=1 brew install python'
-    sendkeys
-    promptterminalready
+    send_keys
+    prompt_terminal_ready
     printf "Installing Pip"
     kbstring='sudo easy_install pip && pip install --upgrade pip'
-    sendkeys
-    promptterminalready
+    send_keys
+    prompt_terminal_ready
     printf "Installing Python Library Pillow"
     kbstring='sudo pip install Pillow'
-    sendkeys
-    promptterminalready
+    send_keys
+    prompt_terminal_ready
     printf "Installing wget"
     kbstring='HOMEBREW_NO_AUTO_UPDATE=1 brew install wget'
-    sendkeys
-    promptterminalready
+    send_keys
+    prompt_terminal_ready
     printf "Getting the Cuckoo agent"
     kbstring='cd /Users/Shared/ && wget '"${agenturl}"
-    sendkeys
-    promptterminalready
+    send_keys
+    prompt_terminal_ready
     printf "setting up cronjob to activate agent at every startup"
     kbstring="sudo crontab -e"
-    sendkeys
-    promptterminalready
+    send_keys
+    prompt_terminal_ready
     kbstring="i* * * * * python /Users/Shared/agent.py"
-    sendkeys
+    send_keys
     kbspecial="ESC"
     sendspecial
     kbstring=":wq"
-    sendkeys
+    send_keys
     #------------------
     #Setting up XNUMON
     #------------------
-    promptterminalready
+    prompt_terminal_ready
     printf "Downloading xnumon"
     kbstring='wget https://mirror.roe.ch/rel/xnumon/xnumon-0.1.7.2.pkg'
-    sendkeys
-    promptterminalready
+    send_keys
+    prompt_terminal_ready
     printf "installing xnumon. Please click on OK when the GUI prompts"
     kbstring='sudo installer -pkg xnumon-0.1.7.2.pkg -target /'
-    sendkeys
-    promptterminalready
+    send_keys
+    prompt_terminal_ready
     printf "Downloading Xnumon configuration"
     kbsring='wget https://raw.githubusercontent.com/ManasMahapatra/cuckoo-macOS/master/configuration.plist-default'
-    sendkeys
-    promptterminalready
+    send_keys
+    prompt_terminal_ready
     printf "Configuring xnumon"
     kbstring 'sudo mv configuration.plist-default /Library/Application\ Support/ch.roe.xnumon/'
-    sendkeys
-    promptterminalready
+    send_keys
+    prompt_terminal_ready
     kbstring='sudo -i'
-    sendkeys
-    promptterminalready
-    printf "Downloading xnumon agent"
-    kbstring='cd /usr/libexec/ && wget https://raw.githubusercontent.com/ManasMahapatra/cuckoo-macOS/master/xnumon-agent.py'
-    sendkeys
-    promptterminalready
-    printf "Downloading xnumon daemon"
-    kbstring='cd /Library/LaunchDaemon/ && wget https://raw.githubusercontent.com/ManasMahapatra/cuckoo-macOS/master/cuckoo.xnumon.plist'
-    sendkeys
+    send_keys
 }
 
 
