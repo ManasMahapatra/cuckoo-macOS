@@ -15,6 +15,7 @@ cpucount=2                       # VM CPU cores, minimum 2
 memorysize=4096                  # VM RAM in MB, minimum 2048
 gpuvram=128                      # VM video RAM in MB, minimum 34, maximum 128
 resolution="1280x800"            # VM display resolution
+agenturl="https://raw.githubusercontent.com/cuckoosandbox/cuckoo/master/cuckoo/data/agent/agent.py" #Agent URL
 
 # The following commented commands may provide the values for the parameters
 # required by iCloud, iMessage, and other connected Apple applications.
