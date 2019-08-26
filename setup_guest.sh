@@ -949,8 +949,17 @@ function bootstrap_cuckoo_guest() {
     kbstring 'sudo mv configuration.plist-default /Library/Application\ Support/ch.roe.xnumon/'
     send_keys
     prompt_terminal_ready
-    kbstring='sudo -i'
+    printf "Shutting down system for disabling System Integrity Protection. Press Enter after the VM is completely powered off"
+    kbstring 'sudo shutdown -h'
     send_keys
+    #-------------------------------------
+    #Disabling System Integrity Protection
+    #-------------------------------------
+    prompt_terminal_ready
+    printf('Disabling SIP')
+    VBoxManage setextradata "${vmname}" "VBoxInternal/Devices/efi/0/LUN#0/Config/Vars/0003/Uuid" "7C436110-AB2A-4BBB-A880-FE41995C9F82"
+    VBoxManage setextradata "${vmname}" "VBoxInternal/Devices/efi/0/LUN#0/Config/Vars/0003/Name" "csr-active-config"
+    VBoxManage setextradata "${vmname}" "VBoxInternal/Devices/efi/0/LUN#0/Config/Vars/0003/Value" "bytes:$(echo -n '0x77' | xxd -r -p | base64)"
 }
 
 
